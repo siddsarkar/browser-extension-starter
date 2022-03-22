@@ -20,7 +20,7 @@ Screenshot of extension options:
 
 ### 1️⃣ Create your own copy
 
-1. Click [<kbd>Use this template</kbd>](https://github.com/fregante/browser-extension-template/generate) to make a copy of your own. 😉
+1. Click [<kbd>Use this template</kbd>](https://github.com/siddsarkar/browser-extension-starter/generate) to make a copy of your own. 😉
 
 ### 🛠 Build locally
 
