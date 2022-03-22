@@ -1,0 +1,45 @@
+{
+    "name": "browser-extension-starter",
+    "version": "1.0.0",
+    "keywords": [
+        "erp",
+        "autplogin",
+        "iitkgp",
+        "chrome",
+        "firefox",
+        "addon",
+        "extension"
+    ],
+    "author": "Siddhartha Sarkar",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/chrome": "^0.0.180",
+        "@typescript-eslint/eslint-plugin": "^5.15.0",
+        "@typescript-eslint/parser": "^5.15.0",
+        "concurrently": "^7.0.0",
+        "copy-webpack-plugin": "^10.2.4",
+        "eslint": "^8.11.0",
+        "husky": "^7.0.4",
+        "lint-staged": "^12.3.7",
+        "prettier": "2.6.0",
+        "tailwindcss": "^3.0.23",
+        "ts-loader": "^9.2.8",
+        "typescript": "^4.6.2",
+        "webpack": "^5.70.0",
+        "webpack-cli": "^4.9.2"
+    },
+    "scripts": {
+        "prepare": "husky install",
+        "lint": "eslint ./src --fix",
+        "prettify": "prettier --write .",
+        "watch:css:popup": "npx tailwindcss -i ./src/pages/popup/input.css -o ./src/pages/popup/style.css --watch",
+        "watch:ts:chrome": "npx webpack --config-name chrome --mode development --watch",
+        "dev:chrome": "concurrently -k -n css:,ts:chrome,webext -c \"bgBlue.bold,bgMagenta.bold,bgYellow.bold\" \"npm:watch:css:*\" \"npm:watch:ts:chrome\" \"web-ext run -t chromium  --sourceDir chrome\"",
+        "build:chrome": "npx webpack --config-name chrome --mode production --output-path dist/chrome",
+        "all:build": "concurrently -k -n build: -c \"bgGreen.bold,bgYellow.bold\" \"npm:build:*\"",
+        "all:dev": "concurrently -k -n dev: -c \"bgGreen.bold,bgYellow.bold\" \"npm:dev:*\""
+    },
+    "lint-staged": {
+        "**/*": "prettier --write --ignore-unknown"
+    }
+}
